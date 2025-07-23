@@ -1,0 +1,574 @@
+/* css/style.css */
+
+/* --- Continue de onde paramos --- */
+
+/* -------------------
+   ESTILOS GERAIS DE SEÇÃO
+------------------- */
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    line-height: 1.3;
+}
+
+#hero {
+    background-image: linear-gradient(rgba(13, 44, 84, 0.6), rgba(13, 44, 84, 0.6)), url('images/bgHomePage.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    min-height: 100vh; /* Ocupa a altura total da tela */
+    display: flex;
+    align-items: center; /* Alinha o conteúdo verticalmente ao centro */
+}
+
+.hero-content {
+    max-width: 650px; /* Limita a largura do bloco de texto */
+    text-align: left; /* Alinha todo o texto à esquerda */
+}
+
+#hero .hero-title {
+    font-size: 82px;
+    font-weight: 800; /* Mais pesado para impacto */
+    margin: 0;
+    line-height: 1.1;
+    color: var(--white);
+}
+
+#hero .hero-tagline {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 10px 0 25px 0;
+    letter-spacing: 1px;
+}
+
+#hero .hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 500px; /* Linhas mais curtas para melhor leitura */
+}
+
+/* Ajuste no botão dentro do Hero para combinar */
+#hero .btn-secondary {
+    padding: 15px 35px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* css/style.css */
+
+/* -------------------
+   SEÇÃO DE SERVIÇOS - ATUALIZADA
+------------------- */
+.services-grid {
+    display: grid;
+    /* ALTERAÇÃO: Usamos um grid de 6 colunas para flexibilidade */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.service-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+    color: white;
+    padding: 25px;
+    min-height: 250px; /* Altura mínima para os cards pequenos */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo na base do card */
+    transition: transform 0.3s ease;
+}
+
+/* NOVO: Estilo para os cards grandes */
+.service-card--large {
+    /* Ocupa 3 das 6 colunas, resultando em 2 por linha */
+    grid-column: span 3;
+    min-height: 350px; /* Mais altura para ter mais conteúdo */
+}
+
+/* NOVO: Estilo para os cards pequenos (por padrão) */
+.service-card:not(.service-card--large) {
+    /* Ocupa 2 das 6 colunas, resultando em 3 por linha */
+    grid-column: span 2;
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Efeito de elevação sutil */
+}
+
+/* Overlay para garantir a legibilidade */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay mais forte na base */
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
+    z-index: 1;
+}
+
+/* NOVO: Container para o conteúdo de texto */
+.card-content {
+    position: relative;
+    z-index: 2; /* Fica acima do overlay */
+}
+
+.service-card h3 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+/* NOVO: Estilo para o parágrafo de descrição */
+.service-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* -------------------
+   SEÇÃO DE GALERIA
+------------------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    opacity: 0.8;
+}
+
+/* -------------------
+   SEÇÃO PRODUTO INOVADOR
+------------------- */
+#innovative-product {
+    background-image: linear-gradient(rgba(13, 44, 84, 0.7), rgba(13, 44, 84, 0.7)), url('images/bgHomePage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito Parallax */
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+}
+
+.innovative-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.innovative-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* -------------------
+   RODAPÉ (FOOTER)
+------------------- */
+.footer {
+    background-color: #111111;
+    color: #a0a0a0;
+    padding: 60px 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    max-height: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-icons a {
+    color: #a0a0a0;
+    font-size: 18px;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+}
+/* css/style.css */
+
+/* -------------------
+   VARIÁVEIS GLOBAIS
+------------------- */
+:root {
+    --primary-color: #0d2c54;    /* Azul escuro */
+    --secondary-color: #fca311; /* Amarelo/Laranja */
+    --light-gray: #f4f4f4;       /* Cinza claro para fundos */
+    --dark-gray: #333;          /* Cinza escuro para texto */
+    --white: #ffffff;
+}
+
+/* -------------------
+   ESTILOS GERAIS
+------------------- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-gray);
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    transform: scale(1.05);
+}
+
+
+/* css/style.css */
+
+/* -------------------
+   CABEÇALHO (HEADER) - ATUALIZADO
+------------------- */
+.header {
+    background-color: transparent; /* Fundo transparente por padrão */
+    padding: 20px 0;
+    position: absolute; /* Posição absoluta sobre o hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.4s ease; /* Transição suave */
+}
+
+/* Estilo do header quando a página é rolada */
+.header.scrolled {
+    background-color: #0b0b0f; /* Cor escura sólida no scroll */
+    position: fixed; /* Fixa no topo ao rolar */
+    border-bottom: 1px solid #222;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    max-height: 50px;
+    z-index: 1001;
+}
+
+/* -------------------
+   MENU E DROPDOWNS - ATUALIZADO
+------------------- */
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Espaçamento entre os itens principais */
+}
+
+.nav-menu li {
+    position: relative; /* Essencial para o posicionamento do dropdown */
+}
+
+.nav-menu a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white); /* Texto do menu branco */
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    display: flex; /* Para alinhar o ícone */
+    align-items: center;
+    gap: 8px; /* Espaço entre texto e seta */
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-menu a i {
+    font-size: 10px; /* Tamanho da seta */
+}
+
+
+/* ESTILOS DO MENU DROPDOWN */
+.dropdown-menu {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%; /* Aparece logo abaixo do item pai */
+    left: 0;
+    background-color: #1c1c1e; /* Cor de fundo escura do dropdown */
+    border-radius: 4px;
+    min-width: 280px; /* Largura mínima do dropdown */
+    padding: 15px 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* Mostra o dropdown ao passar o mouse no item pai */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu a {
+    color: #f0f0f0; /* Cor do texto dos itens do dropdown */
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: none; /* Texto normal, não maiúsculo */
+}
+
+.dropdown-menu a:hover {
+    color: var(--secondary-color);
+}
+
+/* css/style.css */
+
+/* -------------------
+   SEÇÃO HERO - ATUALIZADA
+------------------- */
+#hero {
+    background-image: linear-gradient(rgba(13, 44, 84, 0.6), rgba(13, 44, 84, 0.6)), url('/images/bgHomePage.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ALTERAÇÃO: Adicionado para centralizar o conteúdo horizontalmente */
+}
+
+.hero-content {
+    max-width: 800px; /* ALTERAÇÃO: Aumentei um pouco a largura máxima para o texto respirar */
+    text-align: center;   /* ALTERAÇÃO: Alinhamento de texto centralizado */
+}
+
+#hero .hero-title {
+    font-size: 64px;      /* ALTERAÇÃO: Fonte diminuída de 82px */
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    color: var(--white);
+}
+
+#hero .hero-tagline {
+    font-size: 28px;      /* ALTERAÇÃO: Fonte diminuída de 36px */
+    font-weight: 700;
+    color: var(--white);
+    margin: 15px 0 25px 0;
+    letter-spacing: 1px;
+}
+
+#hero .hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 auto 30px; /* ALTERAÇÃO: Garante que o parágrafo fique centralizado */
+    max-width: 550px;
+}
+
+/* O botão já está centralizado por causa do text-align: center no .hero-content */
+#hero .btn-secondary {
+    padding: 15px 35px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* css/style.css */
+
+/* -------------------
+   SEÇÕES COM EFEITO PARALLAX
+------------------- */
+.parallax-section {
+    /* Propriedades para o efeito parallax */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Layout e Estilo */
+    position: relative; /* Essencial para o posicionamento do overlay */
+    min-height: 65vh; /* Altura de cada seção parallax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* Overlay escuro para melhorar a leitura do texto */
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
+    z-index: 1;
+}
+
+/* Conteúdo (texto e botão) */
+.parallax-content {
+    position: relative; /* Garante que o conteúdo fique na frente do overlay */
+    z-index: 2;
+    max-width: 750px;
+}
+
+.parallax-content h2 {
+    font-size: 42px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.parallax-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* -------------------
+   IMAGENS DE FUNDO PARA CADA SEÇÃO
+------------------- */
+#about {
+    background-image: url('/images/bgHomePage.jpg');
+}
+
+#gym-flooring {
+    background-image: url('/images/bgHomePage.jpg');
+}
+
+#gym-installation {
+    background-image: url('/images/bgHomePage.jpg');
+}
+
+/* ======================================= */
+/* ESTILOS DA SEÇÃO CALL TO ACTION (CTA) */
+/* ======================================= */
+
+#cta {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.cta-title {
+    font-size: 38px;
+    font-weight: 600;
+    color: #0d2c54;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    background-color: #fca311;
+    color: #0d2c54;
+    border: 2px solid #0d2c54;
+    font-weight: 700;
+    padding: 12px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #0d2c54;
+    color: #ffffff;
+}
