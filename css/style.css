@@ -1,10 +1,27 @@
-/* css/style.css */
+/* ======================================= */
+/* 1. VARIÁVEIS GLOBAIS E ESTILOS GERAIS   */
+/* ======================================= */
+:root {
+    --primary-color: #0d2c54;    /* Azul escuro */
+    --secondary-color: #fca311; /* Amarelo/Laranja */
+    --light-gray: #f4f4f4;
+    --dark-gray: #333;
+    --white: #ffffff;
+}
 
-/* --- Continue de onde paramos --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-gray);
+    background-color: var(--white);
+    line-height: 1.6;
+}
 
-/* -------------------
-   ESTILOS GERAIS DE SEÇÃO
-------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 .section-padding {
     padding: 80px 0;
 }
@@ -18,59 +35,179 @@
     line-height: 1.3;
 }
 
-#hero {
-    background-image: linear-gradient(rgba(13, 44, 84, 0.6), rgba(13, 44, 84, 0.6)), url('images/bgHomePage.jpg');
-    background-size: cover;
-    background-position: center;
+.btn {
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-color);
     color: var(--white);
-    min-height: 100vh; /* Ocupa a altura total da tela */
+}
+
+/* ======================================= */
+/* 2. CABEÇALHO & NAVEGAÇÃO                */
+/* ======================================= */
+.header {
+    background-color: transparent;
+    padding: 20px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+}
+
+.header.scrolled {
+    background-color: #0b0b0f;
+    position: fixed;
+    padding: 15px 0;
+    border-bottom: 1px solid #222;
+}
+
+.header .container {
     display: flex;
-    align-items: center; /* Alinha o conteúdo verticalmente ao centro */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    max-height: 50px;
+    z-index: 1001;
+    transition: max-height 0.3s ease;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-menu a i {
+    font-size: 10px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1c1c1e;
+    border-radius: 4px;
+    min-width: 280px;
+    padding: 15px 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu a {
+    color: #f0f0f0;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* ======================================= */
+/* 3. SEÇÃO HERO                           */
+/* ======================================= */
+#hero {
+    background: linear-gradient(rgba(0, 8, 19, 0.6), rgba(25, 33, 44, 0.6)), url('../images/bgHomePage.jpg') no-repeat center center/cover;
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
 }
 
 .hero-content {
-    max-width: 650px; /* Limita a largura do bloco de texto */
-    text-align: left; /* Alinha todo o texto à esquerda */
+    max-width: 800px;
 }
 
 #hero .hero-title {
-    font-size: 82px;
-    font-weight: 800; /* Mais pesado para impacto */
-    margin: 0;
+    font-size: 64px;
+    font-weight: 800;
     line-height: 1.1;
-    color: var(--white);
 }
 
 #hero .hero-tagline {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
-    color: var(--white);
-    margin: 10px 0 25px 0;
+    margin: 15px 0 25px 0;
     letter-spacing: 1px;
 }
 
 #hero .hero-description {
     font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    max-width: 500px; /* Linhas mais curtas para melhor leitura */
+    margin: 0 auto 30px;
+    max-width: 550px;
 }
 
-/* Ajuste no botão dentro do Hero para combinar */
-#hero .btn-secondary {
-    padding: 15px 35px;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-/* css/style.css */
-
-/* -------------------
-   SEÇÃO DE SERVIÇOS - ATUALIZADA
-------------------- */
+/* ======================================= */
+/* 4. SEÇÃO DE SERVIÇOS                    */
+/* ======================================= */
 .services-grid {
     display: grid;
-    /* ALTERAÇÃO: Usamos um grid de 6 colunas para flexibilidade */
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
 }
@@ -83,96 +220,125 @@
     overflow: hidden;
     color: white;
     padding: 25px;
-    min-height: 250px; /* Altura mínima para os cards pequenos */
-
+    min-height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Alinha o conteúdo na base do card */
+    justify-content: flex-end;
     transition: transform 0.3s ease;
 }
 
-/* NOVO: Estilo para os cards grandes */
 .service-card--large {
-    /* Ocupa 3 das 6 colunas, resultando em 2 por linha */
     grid-column: span 3;
-    min-height: 350px; /* Mais altura para ter mais conteúdo */
+    min-height: 350px;
 }
 
-/* NOVO: Estilo para os cards pequenos (por padrão) */
 .service-card:not(.service-card--large) {
-    /* Ocupa 2 das 6 colunas, resultando em 3 por linha */
     grid-column: span 2;
 }
 
 .service-card:hover {
-    transform: translateY(-5px); /* Efeito de elevação sutil */
+    transform: translateY(-5px);
 }
 
-/* Overlay para garantir a legibilidade */
 .service-card::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Overlay mais forte na base */
+    inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
     z-index: 1;
 }
 
-/* NOVO: Container para o conteúdo de texto */
 .card-content {
     position: relative;
-    z-index: 2; /* Fica acima do overlay */
+    z-index: 2;
 }
 
 .service-card h3 {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 10px;
 }
 
-/* NOVO: Estilo para o parágrafo de descrição */
 .service-card p {
     font-size: 15px;
-    line-height: 1.6;
     margin: 0;
     opacity: 0.9;
 }
 
-/* -------------------
-   SEÇÃO DE GALERIA
-------------------- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 250px;
-    grid-auto-flow: dense;
-    gap: 15px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-grid img:hover {
-    opacity: 0.8;
-}
-
-/* -------------------
-   SEÇÃO PRODUTO INOVADOR
-------------------- */
-#innovative-product {
-    background-image: linear-gradient(rgba(13, 44, 84, 0.7), rgba(13, 44, 84, 0.7)), url('images/bgHomePage.jpg');
-    background-size: cover;
+/* ======================================= */
+/* 5. SEÇÕES PARALLAX                      */
+/* ======================================= */
+.parallax-section {
+    background-attachment: fixed;
     background-position: center;
-    background-attachment: fixed; /* Efeito Parallax */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(17, 18, 19, 0.55);
+    z-index: 1;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.parallax-content h2 {
+    font-size: 42px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.parallax-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+#about { background-image: url('/images/bgHomePage.jpg'); }
+#gym-flooring { background-image: url('/images/bgHomePage.jpg'); }
+#gym-installation { background-image: url('/images/bgHomePage.jpg'); }
+
+/* ======================================= */
+/* 6. OUTRAS SEÇÕES (CTA, FOOTER)          */
+/* ======================================= */
+#cta {
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-weight: 700;
+}
+
+.btn-cta:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+#innovative-product {
+    background: linear-gradient(rgba(13, 44, 84, 0.7), rgba(13, 44, 84, 0.7)), url('../images/innovative-bg.jpg') no-repeat center center/cover;
     padding: 100px 0;
     text-align: center;
     color: white;
@@ -192,9 +358,6 @@
     margin-bottom: 30px;
 }
 
-/* -------------------
-   RODAPÉ (FOOTER)
-------------------- */
 .footer {
     background-color: #111111;
     color: #a0a0a0;
@@ -203,7 +366,7 @@
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 40px;
     padding-bottom: 40px;
 }
@@ -225,10 +388,6 @@
     margin-bottom: 10px;
 }
 
-.footer-col a {
-    transition: color 0.3s ease;
-}
-
 .footer-col a:hover {
     color: var(--secondary-color);
 }
@@ -236,339 +395,91 @@
 .footer-bottom {
     border-top: 1px solid #333;
     padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
 }
 
 .social-icons a {
     color: #a0a0a0;
     font-size: 18px;
-    margin-left: 15px;
+    margin: 0 10px;
     transition: color 0.3s ease;
 }
 
-.social-icons a:hover {
-    color: var(--secondary-color);
-}
-/* css/style.css */
-
-/* -------------------
-   VARIÁVEIS GLOBAIS
-------------------- */
-:root {
-    --primary-color: #0d2c54;    /* Azul escuro */
-    --secondary-color: #fca311; /* Amarelo/Laranja */
-    --light-gray: #f4f4f4;       /* Cinza claro para fundos */
-    --dark-gray: #333;          /* Cinza escuro para texto */
-    --white: #ffffff;
-}
-
-/* -------------------
-   ESTILOS GERAIS
-------------------- */
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--dark-gray);
-    background-color: var(--white);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.btn {
-    padding: 12px 28px;
-    border-radius: 5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
-
-.btn-secondary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-}
-
-.btn-secondary:hover {
-    transform: scale(1.05);
-}
-
-
-/* css/style.css */
-
-/* -------------------
-   CABEÇALHO (HEADER) - ATUALIZADO
-------------------- */
-.header {
-    background-color: transparent; /* Fundo transparente por padrão */
-    padding: 20px 0;
-    position: absolute; /* Posição absoluta sobre o hero */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: background-color 0.4s ease; /* Transição suave */
-}
-
-/* Estilo do header quando a página é rolada */
-.header.scrolled {
-    background-color: #0b0b0f; /* Cor escura sólida no scroll */
-    position: fixed; /* Fixa no topo ao rolar */
-    border-bottom: 1px solid #222;
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    max-height: 50px;
-    z-index: 1001;
-}
-
-/* -------------------
-   MENU E DROPDOWNS - ATUALIZADO
-------------------- */
-.nav-menu ul {
-    display: flex;
-    align-items: center;
-    gap: 35px; /* Espaçamento entre os itens principais */
-}
-
-.nav-menu li {
-    position: relative; /* Essencial para o posicionamento do dropdown */
-}
-
-.nav-menu a {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--white); /* Texto do menu branco */
-    text-transform: uppercase;
-    padding-bottom: 5px;
-    display: flex; /* Para alinhar o ícone */
-    align-items: center;
-    gap: 8px; /* Espaço entre texto e seta */
-    transition: color 0.3s ease;
-}
-
-.nav-menu a:hover {
-    color: var(--secondary-color);
-}
-
-.nav-menu a i {
-    font-size: 10px; /* Tamanho da seta */
-}
-
-
-/* ESTILOS DO MENU DROPDOWN */
-.dropdown-menu {
-    display: none; /* Escondido por padrão */
-    position: absolute;
-    top: 100%; /* Aparece logo abaixo do item pai */
-    left: 0;
-    background-color: #1c1c1e; /* Cor de fundo escura do dropdown */
-    border-radius: 4px;
-    min-width: 280px; /* Largura mínima do dropdown */
-    padding: 15px 0;
-    list-style: none;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-}
-
-/* Mostra o dropdown ao passar o mouse no item pai */
-.dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dropdown-menu li {
-    padding: 10px 20px;
-}
-
-.dropdown-menu a {
-    color: #f0f0f0; /* Cor do texto dos itens do dropdown */
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: none; /* Texto normal, não maiúsculo */
-}
-
-.dropdown-menu a:hover {
-    color: var(--secondary-color);
-}
-
-/* css/style.css */
-
-/* -------------------
-   SEÇÃO HERO - ATUALIZADA
-------------------- */
-#hero {
-    background-image: linear-gradient(rgba(13, 44, 84, 0.6), rgba(13, 44, 84, 0.6)), url('/images/bgHomePage.jpg');
-    background-size: cover;
-    background-position: center;
-    color: var(--white);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* ALTERAÇÃO: Adicionado para centralizar o conteúdo horizontalmente */
-}
-
-.hero-content {
-    max-width: 800px; /* ALTERAÇÃO: Aumentei um pouco a largura máxima para o texto respirar */
-    text-align: center;   /* ALTERAÇÃO: Alinhamento de texto centralizado */
-}
-
-#hero .hero-title {
-    font-size: 64px;      /* ALTERAÇÃO: Fonte diminuída de 82px */
-    font-weight: 800;
-    margin: 0;
-    line-height: 1.1;
-    color: var(--white);
-}
-
-#hero .hero-tagline {
-    font-size: 28px;      /* ALTERAÇÃO: Fonte diminuída de 36px */
-    font-weight: 700;
-    color: var(--white);
-    margin: 15px 0 25px 0;
-    letter-spacing: 1px;
-}
-
-#hero .hero-description {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 auto 30px; /* ALTERAÇÃO: Garante que o parágrafo fique centralizado */
-    max-width: 550px;
-}
-
-/* O botão já está centralizado por causa do text-align: center no .hero-content */
-#hero .btn-secondary {
-    padding: 15px 35px;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-/* css/style.css */
-
-/* -------------------
-   SEÇÕES COM EFEITO PARALLAX
-------------------- */
-.parallax-section {
-    /* Propriedades para o efeito parallax */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    /* Layout e Estilo */
-    position: relative; /* Essencial para o posicionamento do overlay */
-    min-height: 65vh; /* Altura de cada seção parallax */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-/* Overlay escuro para melhorar a leitura do texto */
-.parallax-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
-    z-index: 1;
-}
-
-/* Conteúdo (texto e botão) */
-.parallax-content {
-    position: relative; /* Garante que o conteúdo fique na frente do overlay */
-    z-index: 2;
-    max-width: 750px;
-}
-
-.parallax-content h2 {
-    font-size: 42px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.parallax-content p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-/* -------------------
-   IMAGENS DE FUNDO PARA CADA SEÇÃO
-------------------- */
-#about {
-    background-image: url('/images/bgHomePage.jpg');
-}
-
-#gym-flooring {
-    background-image: url('/images/bgHomePage.jpg');
-}
-
-#gym-installation {
-    background-image: url('/images/bgHomePage.jpg');
-}
-
 /* ======================================= */
-/* ESTILOS DA SEÇÃO CALL TO ACTION (CTA) */
+/* 7. RESPONSIVIDADE (MEDIA QUERIES)       */
 /* ======================================= */
 
-#cta {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 80px 20px;
+/* --- TABLETS (Até 992px) --- */
+@media (max-width: 992px) {
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(11, 11, 15, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    .service-card--large,
+    .service-card:not(.service-card--large) {
+        grid-column: span 6;
+    }
 }
 
-.cta-title {
-    font-size: 38px;
-    font-weight: 600;
-    color: #0d2c54;
-    margin-bottom: 30px;
-}
+/* --- CELULARES (Até 768px) --- */
+@media (max-width: 768px) {
+    .section-padding { padding: 60px 0; }
+    .section-title { font-size: 30px; }
 
-.btn-cta {
-    background-color: #fca311;
-    color: #0d2c54;
-    border: 2px solid #0d2c54;
-    font-weight: 700;
-    padding: 12px 35px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+    .header { padding: 15px 0; }
+    .header.scrolled { padding: 10px 0; }
+    .logo { max-height: 40px; }
 
-.btn-cta:hover {
-    background-color: #0d2c54;
-    color: #ffffff;
+    #hero .hero-title { font-size: 42px; }
+    #hero .hero-tagline { font-size: 22px; }
+
+    .parallax-section {
+        background-attachment: scroll;
+    }
+
+    .parallax-content h2 { font-size: 32px; }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
 }
