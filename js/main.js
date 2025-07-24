@@ -1,54 +1,16 @@
-// js/main.js
+// js/main.js (dentro do DOMContentLoaded)
 
-document.addEventListener('DOMContentLoaded', function() {
-
-    // 1. Efeito de Header com Scroll
-    const header = document.querySelector('.header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-    }
-
-    // 2. Funcionalidade do Menu Mobile
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-    }
-
-    // 3. NOVO: Funcionalidade das Abas (Tabs) para a página ISO Containers
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    if (tabButtons.length > 0 && tabContents.length > 0) {
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove a classe 'active' de todos os botões e conteúdos
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                // Adiciona a classe 'active' ao botão clicado e ao conteúdo correspondente
-                button.classList.add('active');
-                const targetTab = document.getElementById(button.getAttribute('data-tab'));
-                if (targetTab) {
-                    targetTab.classList.add('active');
-                }
-            });
-        });
-    }
-});
-
-// 3. NOVO: Funcionalidade das Abas (Tabs) com suporte para Dropdown Mobile
+// 3. VERSÃO FINAL: Funcionalidade das Abas (Desktop) e Dropdown Customizado (Mobile)
 const tabsContainer = document.querySelector('.tabs-container');
 if (tabsContainer) {
     const tabButtons = tabsContainer.querySelectorAll('.tab-button');
     const tabContents = tabsContainer.querySelectorAll('.tab-content');
-    const tabsDropdown = tabsContainer.querySelector('.tabs-dropdown');
+    
+    // Lógica do Dropdown Customizado
+    const customDropdown = tabsContainer.querySelector('.custom-dropdown');
+    const selectedOption = tabsContainer.querySelector('.selected-option');
+    const optionsList = tabsContainer.querySelector('.options-list');
+    const options = tabsContainer.querySelectorAll('.options-list li');
 
     function showTab(tabId) {
         tabContents.forEach(content => {
@@ -56,6 +18,7 @@ if (tabsContainer) {
         });
     }
 
+    // Event listener para os botões do desktop
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const targetTab = button.getAttribute('data-tab');
@@ -65,8 +28,25 @@ if (tabsContainer) {
         });
     });
 
-    tabsDropdown.addEventListener('change', () => {
-        const targetTab = tabsDropdown.value;
-        showTab(targetTab);
+    // Event listener para abrir/fechar o dropdown customizado
+    selectedOption.addEventListener('click', () => {
+        customDropdown.classList.toggle('open');
+    });
+
+    // Event listener para selecionar uma opção no dropdown
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            selectedOption.querySelector('span').textContent = option.textContent;
+            customDropdown.classList.remove('open');
+            const targetTab = option.getAttribute('data-tab');
+            showTab(targetTab);
+        });
+    });
+
+    // Fecha o dropdown se clicar fora dele
+    document.addEventListener('click', function(e) {
+        if (!customDropdown.contains(e.target)) {
+            customDropdown.classList.remove('open');
+        }
     });
 }
