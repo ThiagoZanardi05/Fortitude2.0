@@ -491,6 +491,23 @@ body {
 /* 8. ESTILOS PÁGINA DE SERVIÇO "FLOORING"  */
 /* ======================================= */
 
+.page-hero {
+    min-height: 50vh; /* Altura padrão */
+}
+.page-hero .page-intro {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.page-hero h1 {
+    font-size: 90px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+}
+
 /* --- Banner da Página --- */
 #flooring-hero {
     min-height: 50vh; /* Altura ajustada */
@@ -719,4 +736,145 @@ body {
     #flooring-hero h1 { font-size: 50px; }
     .foreground-card h2, .split-content h2, .layout-text h2 { font-size: 32px; }
     .alternating-layout, .split-layout { flex-direction: column !important; gap: 40px; }
+}
+
+/* =================================================================== */
+/* 9. ESTILOS PÁGINA "ISO CONTAINERS" (VERSÃO FINAL COM CORREÇÕES) */
+/* =================================================================== */
+
+/* --- Banner --- */
+#iso-hero { min-height: 70vh; }
+#iso-hero h1 { font-size: 60px; }
+
+/* --- Seção de Abas (Tabs) --- */
+.tabs-section { background-color: var(--light-gray); }
+.tabs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.tab-buttons {
+    display: flex;
+    background-color: #e9e9f0;
+}
+.tab-button {
+    flex-grow: 1;
+    padding: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap; 
+}
+.tab-button:hover {
+    background-color: #f0f0f5;
+}
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
+}
+.tab-content {
+    display: none;
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+.tab-content.active {
+    display: block;
+}
+.tab-content img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.tab-content h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+.tab-content ul {
+    list-style-type: '✓';
+    list-style-position: inside;
+    padding-left: 5px;
+}
+.tab-content ul li {
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SEÇÃO: Ideal For (NOVO DESIGN) --- */
+.ideal-for-section {
+    background-color: var(--light-gray); /* Fundo cinza claro */
+}
+.ideal-for-section .section-header h2 {
+    color: var(--primary-color);
+}
+.ideal-for-grid {
+    display: grid;
+    /* Cria um grid responsivo que se ajusta ao conteúdo */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.ideal-item {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    display: flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    gap: 20px; /* Espaço entre ícone e texto */
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+.ideal-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+}
+.ideal-item i {
+    font-size: 28px;
+    color: var(--secondary-color); /* Ícone laranja */
+    line-height: 1;
+}
+.ideal-item span {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color); /* Texto preto */
+}
+
+/* --- CORREÇÃO MOBILE: Responsividade das abas com Dropdown --- */
+@media(max-width: 768px) {
+    .tab-buttons {
+        display: none; /* Esconde os botões no mobile */
+    }
+    .tabs-dropdown {
+        display: block; /* Mostra o dropdown no mobile */
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        border: 2px solid #e9e9f0;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .tab-content { padding: 25px; }
+    .tab-content img { height: 250px; }
+}
+
+/* --- Estilo padrão do dropdown (escondido no desktop) --- */
+.tabs-dropdown {
+    display: none;
 }
