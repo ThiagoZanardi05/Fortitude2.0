@@ -1,9 +1,10 @@
 /* ======================================= */
 /* 1. VARIÁVEIS GLOBAIS E ESTILOS GERAIS   */
 /* ======================================= */
+/* DEPOIS */
 :root {
-    --primary-color: #0d2c54;    /* Azul escuro */
-    --secondary-color: #fca311; /* Amarelo/Laranja */
+    --primary-color: #111111;    /* ALTERADO: Azul trocado por Preto/Carvão */
+    --secondary-color: #f97316; /* ALTERADO: Amarelo trocado por um Laranja mais forte */
     --light-gray: #f4f4f4;
     --dark-gray: #333;
     --white: #ffffff;
@@ -487,11 +488,13 @@ body {
 }
 
 /* ======================================= */
-/* 8. NOVO DESIGN PÁGINA "FLOORING"         */
+/* 8. ESTILOS PÁGINA DE SERVIÇO "FLOORING"  */
 /* ======================================= */
 
-/* --- Banner --- */
-#flooring-hero { min-height: 70vh; }
+/* --- Banner da Página --- */
+#flooring-hero {
+    min-height: 50vh; /* Altura ajustada */
+}
 #flooring-hero .page-intro {
     font-size: 20px;
     font-weight: 600;
@@ -506,7 +509,10 @@ body {
     line-height: 1;
 }
 
-/* --- Layout com Sobreposição --- */
+/* --- Layout com Sobreposição (SBR & EPDM) --- */
+.overlapping-section {
+    background-color: #f9f9f9; /* Um cinza muito claro para dar contraste */
+}
 .overlapping-layout {
     position: relative;
     display: flex;
@@ -538,17 +544,134 @@ body {
 }
 .foreground-card h2 {
     font-size: 42px;
-    color: black;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 .foreground-card p {
     margin-bottom: 25px;
 }
 
-/* --- Grid de Vantagens --- */
-.section-header { text-align: center; margin-bottom: 50px; }
-.section-header h2 { font-size: 38px; }
-.light-text { color: var(--white); }
+/* --- Seção de Tamanhos Disponíveis (Tiles Available In) --- */
+.specs-section {
+    background-color: #1a1a1d; /* Fundo escuro */
+}
+.specs-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--secondary-color); /* Cor do título em destaque */
+    margin-bottom: 40px;
+}
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.spec-category {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 8px;
+}
+.spec-category h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+.spec-category span {
+    display: inline-block;
+    background-color: var(--dark-gray);
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #f0f0f0;
+}
+
+/* --- Layout Alternado (Commercial Flooring) --- */
+.content-section {
+    overflow: hidden; /* Garante que as animações não "vazem" */
+}
+.alternating-layout {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.alternating-layout .layout-image {
+    flex: 1;
+}
+.alternating-layout .layout-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+.alternating-layout .layout-text {
+    flex: 1;
+}
+.layout-text h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.layout-text p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+.alternating-layout.layout-reverse {
+    flex-direction: row-reverse;
+}
+
+/* --- Layout Dividido (Turf) --- */
+.split-section {
+    background-color: #1a1a1d;
+}
+.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.split-content {
+    flex: 1;
+    color: #f0f0f0;
+}
+.split-content h2 {
+    font-size: 42px;
+    color: var(--white);
+}
+.split-content p {
+    margin-bottom: 20px;
+}
+.split-image {
+    flex: 1;
+}
+.split-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+.tech-specs-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+.tech-specs-list {
+    list-style: none;
+    font-size: 15px;
+}
+.tech-specs-list li {
+    margin-bottom: 5px;
+}
+
+/* --- Seção de Vantagens (Features Grid) --- */
+.features-grid-section { background-color: #1a1a1d; }
+.section-header { text-align: center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.section-header h2 { font-size: 38px; color: var(--white); }
+.section-header p { color: var(--text-color-light); }
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -557,13 +680,13 @@ body {
 }
 .feature-item i {
     font-size: 40px;
-    color: orange;
+    color: var(--secondary-color);
     margin-bottom: 20px;
 }
 .feature-item h3 {
     font-size: 20px;
     font-weight: 700;
-    color: black;
+    color: var(--white);
     margin-bottom: 10px;
 }
 .feature-item p {
@@ -571,43 +694,18 @@ body {
     color: var(--text-color-light);
 }
 
-/* --- Layout Dividido (Turf) --- */
-.split-layout {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-.split-content { flex: 1; }
-.split-content h2 { font-size: 42px; color: black; }
-.split-content p { margin-bottom: 20px; }
-.split-image { flex: 1; }
-.split-image img { width: 100%; border-radius: 8px; }
-
-.tech-specs-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    color: black);
-}
-.tech-specs-list { list-style: none; }
-.tech-specs-list li { margin-bottom: 5px; }
-
 /* --- CTA Final --- */
 .cta-section-final {
     background-color: var(--light-gray);
-    text-align: center; /* <<< ESTA LINHA CORRIGE O BUG */
-    padding: 80px 20px; /* Adiciona espaçamento vertical consistente */
+    text-align: center;
 }
-
 .cta-section-final h2 {
     font-size: 38px;
-    color: black;
+    color: var(--primary-color);
 }
-
 .cta-section-final p {
     max-width: 600px;
-    margin: 20px auto 30px; /* O 'auto' nas laterais centraliza o bloco do parágrafo */
+    margin: 20px auto 30px;
 }
 
 /* --- Responsividade para os novos layouts --- */
@@ -618,7 +716,7 @@ body {
 }
 
 @media(max-width: 768px) {
-    #flooring-hero h1 { font-size: 60px; }
-    .foreground-card h2, .split-content h2 { font-size: 32px; }
-    .split-layout { flex-direction: column; }
+    #flooring-hero h1 { font-size: 50px; }
+    .foreground-card h2, .split-content h2, .layout-text h2 { font-size: 32px; }
+    .alternating-layout, .split-layout { flex-direction: column !important; gap: 40px; }
 }
