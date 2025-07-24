@@ -434,7 +434,7 @@ body {
 
 /* --- ESTILOS ESPECÍFICOS DA PÁGINA "FLOORING" --- */
 #flooring-hero {
-    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/flooring-hero-bg.jpg');
+    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('/Fortitude2.0/images/TurfFlooring.jpeg');
 }
 .overlapping-section {
     background-color: #f9f9f9;
