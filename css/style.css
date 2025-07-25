@@ -1,4 +1,3 @@
-/* ======================================= */
 /* 1. VARIÁVEIS GLOBAIS E ESTILOS GERAIS   */
 /* ======================================= */
 :root {
@@ -406,10 +405,9 @@ body {
 /* 7. ESTILOS DAS PÁGINAS DE PRODUTO (FLOORING, ISO, ETC.)          */
 /* =================================================================== */
 
-/* DEPOIS */
 /* --- BANNER PADRÃO PARA TODAS AS PÁGINAS DE PRODUTO --- */
 .page-hero {
-    min-height: 65vh; /* ALTURA AUMENTADA de 50vh para 65vh */
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -419,14 +417,14 @@ body {
     padding-bottom: 0;
 }
 .page-hero .page-intro {
-    font-size: 22px; /* FONTE SUTILMENTE MAIOR */
+    font-size: 22px;
     font-weight: 600;
     color: var(--secondary-color);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 .page-hero h1 {
-    font-size: 110px; /* FONTE AUMENTADA de 90px para 110px */
+    font-size: 110px;
     font-weight: 800;
     color: var(--white);
     line-height: 1;
@@ -434,7 +432,10 @@ body {
 
 /* --- ESTILOS ESPECÍFICOS DA PÁGINA "FLOORING" --- */
 #flooring-hero {
-    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('/Fortitude2.0/images/TurfFlooring.jpeg');
+    background-color: #111;
+}
+#flooring-hero::before {
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.4));
 }
 .overlapping-section {
     background-color: #f9f9f9;
@@ -477,7 +478,7 @@ body {
     margin-bottom: 25px;
 }
 .specs-section {
-    background-color: #1a1a1d;
+    background-color: #393737;
 }
 .specs-title {
     text-align: center;
@@ -588,8 +589,8 @@ body {
 }
 .features-grid-section { background-color: #1a1a1d; }
 .section-header { text-align: center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; }
-.section-header h2 { font-size: 38px; }
-.section-header p { color: var(--text-color-light); }
+.section-header h2 { font-size: 38px; color: white; }
+.section-header p { color: white; }
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -625,8 +626,15 @@ body {
 }
 
 /* --- ESTILOS ESPECÍFICOS DA PÁGINA "ISO CONTAINERS" --- */
+/* --- ESTILOS ESPECÍFICOS DA PÁGINA "ISO CONTAINERS" --- */
 #iso-hero {
-    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/iso-hero-bg.jpg');
+    /* O background-image vem do HTML */
+    background-color: #111; /* Cor de fallback */
+}
+
+#iso-hero::before {
+    /* Aplica o mesmo gradiente refinado da página flooring */
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.4));
 }
 .tabs-section { background-color: var(--light-gray); }
 .tabs-container {
@@ -731,11 +739,6 @@ body {
     font-weight: 600;
     color: var(--primary-color);
 }
-.tabs-dropdown {
-    display: none;
-}
-
-/* Esconde o dropdown customizado por padrão (no desktop) */
 .custom-dropdown {
     display: none;
 }
@@ -792,71 +795,91 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* DENTRO DE @media(max-width: 768px) */
+    .section-padding { padding: 60px 0; }
+    .section-title { font-size: 30px; }
+    .header { padding: 15px 0; }
+    .header.scrolled { padding: 10px 0; }
+    .logo { max-height: 40px; }
+    #hero .hero-title { font-size: 42px; }
+    #hero .hero-tagline { font-size: 22px; }
+    .parallax-section {
+        background-attachment: scroll;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
 
-/* --- CORREÇÃO FINAL: Dropdown CUSTOMIZADO para Mobile --- */
-.tab-buttons {
-    display: none; /* Esconde os botões no desktop */
-}
+    /* Estilos de produto para mobile */
+    .page-hero h1 { font-size: 50px; }
+    .foreground-card h2, .split-content h2, .layout-text h2 { font-size: 32px; }
+    .alternating-layout, .split-layout { flex-direction: column !important; gap: 40px; }
 
-.custom-dropdown {
-    display: block; /* Mostra nosso dropdown customizado no mobile */
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.selected-option {
-    padding: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--primary-color);
-    background-color: var(--white);
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.selected-option .fa-chevron-down {
-    color: var(--secondary-color);
-    transition: transform 0.3s ease;
-}
-
-.custom-dropdown.open .selected-option .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-.options-list {
-    display: none; /* Lista de opções escondida por padrão */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--white);
-    border: 2px solid var(--primary-color);
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    z-index: 10;
-    list-style: none;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.custom-dropdown.open .options-list {
-    display: block; /* Mostra a lista quando o dropdown está aberto */
-}
-
-.options-list li {
-    padding: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.options-list li:hover {
-    background-color: var(--light-gray);
-}
+    /* --- CORREÇÃO FINAL: Dropdown CUSTOMIZADO para Mobile --- */
+    .tab-buttons {
+        display: none;
+    }
+    .custom-dropdown {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .selected-option {
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--primary-color);
+        background-color: var(--white);
+        border: 2px solid var(--primary-color);
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .selected-option .fa-chevron-down {
+        color: var(--secondary-color);
+        transition: transform 0.3s ease;
+    }
+    .custom-dropdown.open .selected-option .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+    .options-list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        border: 2px solid var(--primary-color);
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        z-index: 10;
+        list-style: none;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    .custom-dropdown.open .options-list {
+        display: block;
+    }
+    .options-list li {
+        padding: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+    .options-list li:hover {
+        background-color: var(--light-gray);
+    }
+    .tab-content { padding: 25px; }
+    .tab-content img { height: 250px; }
 }
