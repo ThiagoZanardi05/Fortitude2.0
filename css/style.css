@@ -1,3 +1,4 @@
+/* ======================================= */
 /* 1. VARIÁVEIS GLOBAIS E ESTILOS GERAIS   */
 /* ======================================= */
 :root {
@@ -333,26 +334,6 @@ body {
     color: var(--white);
 }
 
-#innovative-product {
-    padding: 100px 0;
-    text-align: center;
-    color: white;
-}
-
-.innovative-subtitle {
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.innovative-title {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
-
 .footer {
     background-color: #111111;
     color: #a0a0a0;
@@ -430,7 +411,7 @@ body {
     line-height: 1;
 }
 
-/* --- ESTILOS ESPECÍFICOS DA PÁGINA "FLOORING" --- */
+/* --- ESTILOS DA PÁGINA "FLOORING" --- */
 #flooring-hero {
     background-color: #111;
 }
@@ -478,7 +459,7 @@ body {
     margin-bottom: 25px;
 }
 .specs-section {
-    background-color: #393737;
+    background-color: #1a1a1d;
 }
 .specs-title {
     text-align: center;
@@ -589,8 +570,8 @@ body {
 }
 .features-grid-section { background-color: #1a1a1d; }
 .section-header { text-align: center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; }
-.section-header h2 { font-size: 38px; color: white; }
-.section-header p { color: white; }
+.section-header h2 { font-size: 38px; }
+.section-header p { color: var(--text-color-light); }
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -625,15 +606,11 @@ body {
     margin: 20px auto 30px;
 }
 
-/* --- ESTILOS ESPECÍFICOS DA PÁGINA "ISO CONTAINERS" --- */
-/* --- ESTILOS ESPECÍFICOS DA PÁGINA "ISO CONTAINERS" --- */
+/* --- ESTILOS DA PÁGINA "ISO CONTAINERS" --- */
 #iso-hero {
-    /* O background-image vem do HTML */
-    background-color: #111; /* Cor de fallback */
+    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/iso-hero-bg.jpg');
 }
-
 #iso-hero::before {
-    /* Aplica o mesmo gradiente refinado da página flooring */
     background: linear-gradient(to top, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.4));
 }
 .tabs-section { background-color: var(--light-gray); }
@@ -778,20 +755,6 @@ body {
     .service-card:not(.service-card--large) {
         grid-column: span 6;
     }
-    .overlapping-layout {
-        flex-direction: column;
-        min-height: auto;
-    }
-    .overlapping-layout .background-image {
-        position: static;
-        width: 100%;
-        height: 300px;
-        margin-bottom: -100px;
-    }
-    .overlapping-layout .foreground-card {
-        width: 90%;
-        margin: 0 auto;
-    }
 }
 
 @media (max-width: 768px) {
@@ -818,12 +781,39 @@ body {
         justify-content: center;
     }
 
-    /* Estilos de produto para mobile */
-    .page-hero h1 { font-size: 50px; }
-    .foreground-card h2, .split-content h2, .layout-text h2 { font-size: 32px; }
-    .alternating-layout, .split-layout { flex-direction: column !important; gap: 40px; }
+    /* --- ESTILOS DE PRODUTO PARA MOBILE --- */
+    .page-hero h1 {
+        font-size: 60px; /* Tamanho ajustado para mobile */
+    }
+    .page-hero .page-intro {
+        font-size: 18px;
+    }
+    .overlapping-layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .overlapping-layout .background-image {
+        position: static;
+        width: 100%;
+        height: 250px;
+        margin-bottom: -80px;
+    }
+    .overlapping-layout .foreground-card {
+        width: 100%;
+        padding: 30px;
+    }
+    .foreground-card h2, .split-content h2, .layout-text h2 {
+        font-size: 32px;
+    }
+    .alternating-layout, .split-layout {
+        flex-direction: column !important;
+        gap: 40px;
+    }
+    .ideal-for-grid {
+        grid-template-columns: 1fr;
+    }
 
-    /* --- CORREÇÃO FINAL: Dropdown CUSTOMIZADO para Mobile --- */
+    /* --- DROPDOWN DAS ABAS PARA MOBILE --- */
     .tab-buttons {
         display: none;
     }
@@ -884,39 +874,30 @@ body {
     .tab-content img { height: 250px; }
 }
 /* ======================================= */
-/* 10. ESTILOS PÁGINA "M.T.P"              */
+/* 12. ESTILOS PÁGINA "FUNCTIONAL RIGS"    */
 /* ======================================= */
 
-#mtp-hero {
-    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/mtp-hero-bg.jpg');
+#rigs-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/rigs-hero-bg.jpg');
 }
 
-/* --- Seção Ideal For (versão escura) --- */
-.ideal-for-section.dark-bg {
-    background-color: #1a1a1d;
-}
-.ideal-for-section.dark-bg .ideal-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-.ideal-for-section.dark-bg .ideal-item span {
-    color: var(--white);
+#rigs-hero h1 {
+    font-size: 80px; /* Fonte um pouco menor para caber melhor */
 }
 
-/* --- CTA Final --- */
-.patent-text {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 8px 15px;
-    background-color: var(--light-gray);
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-weight: 600;
-    color: var(--primary-color);
-    font-size: 14px;
+/* Ajustes na seção de abas para esta página */
+#rigs-page .tabs-section .section-header p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.final-cta-title {
-    font-size: 32px;
-    color: var(--primary-color);
-    margin: 40px 0 10px;
+
+#rigs-page .tab-content {
+    text-align: center;
+}
+
+#rigs-page .tab-content h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--dark-gray);
 }
