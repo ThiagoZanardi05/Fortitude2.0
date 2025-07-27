@@ -883,3 +883,40 @@ body {
     .tab-content { padding: 25px; }
     .tab-content img { height: 250px; }
 }
+/* ======================================= */
+/* 10. ESTILOS PÁGINA "M.T.P"              */
+/* ======================================= */
+
+#mtp-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/mtp-hero-bg.jpg');
+}
+
+/* --- Seção Ideal For (versão escura) --- */
+.ideal-for-section.dark-bg {
+    background-color: #1a1a1d;
+}
+.ideal-for-section.dark-bg .ideal-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.ideal-for-section.dark-bg .ideal-item span {
+    color: var(--white);
+}
+
+/* --- CTA Final --- */
+.patent-text {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 15px;
+    background-color: var(--light-gray);
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 14px;
+}
+.final-cta-title {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin: 40px 0 10px;
+}
