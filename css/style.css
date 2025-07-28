@@ -58,7 +58,6 @@ body.mobile-menu-open {
 .mobile-menu-toggle.active .fa-bars { display: none; }
 .mobile-menu-toggle.active .fa-times { display: block; }
 
-
 /* ======================================= */
 /* 3. SEÇÕES GERAIS (HERO, PARALLAX, ETC)  */
 /* ======================================= */
@@ -135,7 +134,9 @@ body.mobile-menu-open {
 .cta-section-final h2 { font-size: 38px; color: var(--primary-color); }
 .cta-section-final p { max-width: 600px; margin: 20px auto 30px; }
 
-#flooring-hero::before { background: linear-gradient(to top, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.4)); }
+#flooring-hero::before, #iso-hero::before, #mtp-hero::before, #rigs-hero::before, #trails-hero::before, #build-hero::before {
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.4));
+}
 .overlapping-section { background-color: #f9f9f9; }
 .overlapping-layout { position: relative; display: flex; align-items: center; min-height: 500px; }
 .overlapping-layout .background-image { position: absolute; top: 0; left: 0; width: 65%; height: 100%; }
@@ -157,9 +158,6 @@ body.mobile-menu-open {
 .feature-item h3 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
 .feature-item p { font-size: 15px; color: var(--text-color-light); }
 
-#iso-hero::before, #mtp-hero::before, #rigs-hero::before, #trails-hero::before {
-    background: linear-gradient(to top, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.4));
-}
 .tabs-section { background-color: var(--light-gray); }
 .tabs-container { max-width: 900px; margin: 0 auto; background-color: var(--white); border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; }
 .tab-buttons { display: flex; background-color: #e9e9f0; }
@@ -182,24 +180,20 @@ body.mobile-menu-open {
 .ideal-item span { font-size: 18px; font-weight: 600; color: var(--primary-color); }
 .custom-dropdown { display: none; }
 
-#rigs-hero h1 { font-size: 80px; }
+#rigs-hero h1, #build-hero h1 { font-size: 80px; }
 #rigs-page .tabs-section .section-header p { max-width: 600px; margin-left: auto; margin-right: auto; }
 #rigs-page .tab-content { text-align: center; }
 #rigs-page .tab-content h4 { font-size: 18px; font-weight: 500; color: var(--dark-gray); }
 
-/* ======================================= */
-/* 8. RESPONSIVIDADE (MEDIA QUERIES)       */
-/* ======================================= */
+.ideal-for-section.dark-bg { background-color: #1a1a1d; }
+.ideal-for-section.dark-bg .ideal-item { background-color: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); }
+.ideal-for-section.dark-bg .ideal-item span { color: var(--white); }
+
 /* ======================================= */
 /* 8. RESPONSIVIDADE (MEDIA QUERIES)       */
 /* ======================================= */
 @media (max-width: 992px) {
-    /* --- ESTILOS DO MENU MOBILE COMPLETO --- */
-    .mobile-menu-toggle {
-        display: block;
-        z-index: 1001;
-    }
-
+    .mobile-menu-toggle { display: block; z-index: 1001; }
     .nav-menu {
         display: none;
         position: fixed;
@@ -216,27 +210,12 @@ body.mobile-menu-open {
         z-index: 1000;
         overflow-y: auto;
     }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        gap: 2rem;
-        text-align: center;
-        width: 100%;
-    }
-
-    .nav-menu > ul > li > a {
-        font-size: 1.5rem;
-    }
-
-    /* --- ESTILO PADRÃO E CORRIGIDO DOS SUBMENUS --- */
-    .dropdown:hover .dropdown-menu {
-        display: none;
-    }
-
+    .nav-menu.active { display: flex; }
+    
+    .nav-menu ul { flex-direction: column; gap: 2rem; text-align: center; width: 100%; }
+    .nav-menu > ul > li > a { font-size: 1.5rem; }
+    
+    .dropdown:hover .dropdown-menu { display: none; }
     .nav-menu .dropdown .dropdown-menu {
         display: none;
         position: static;
@@ -248,39 +227,15 @@ body.mobile-menu-open {
         transform: none;
         opacity: 1;
         visibility: visible;
-        text-align: left; /* <-- ESSA É A CORREÇÃO MÁGICA */
+        text-align: left;
     }
+    .nav-menu .dropdown.active > .dropdown-menu { display: block; }
+    .nav-menu .dropdown .dropdown-menu li { padding: 0.5rem 0; text-align: center; }
+    .nav-menu .dropdown .dropdown-menu a { font-size: 1rem; font-weight: 400; color: var(--text-color-light); text-transform: none; padding-bottom: 0; }
+    .nav-menu .dropdown .dropdown-menu a:hover { color: var(--secondary-color); }
+    .nav-menu .dropdown.active > a i { transform: rotate(180deg); }
 
-    .nav-menu .dropdown.active > .dropdown-menu {
-        display: block;
-    }
-
-    .nav-menu .dropdown .dropdown-menu li {
-        padding: 0.5rem 0;
-        text-align: center; /* Centraliza cada item individualmente */
-    }
-
-    .nav-menu .dropdown .dropdown-menu a {
-        font-size: 1rem;
-        font-weight: 400;
-        color: var(--text-color-light);
-        text-transform: none;
-        padding-bottom: 0;
-    }
-
-    .nav-menu .dropdown .dropdown-menu a:hover {
-        color: var(--secondary-color);
-    }
-
-    .nav-menu .dropdown.active > a i {
-        transform: rotate(180deg);
-    }
-
-    /* --- OUTRAS REGRAS PARA TABLET --- */
-    .service-card--large,
-    .service-card:not(.service-card--large) {
-        grid-column: span 6;
-    }
+    .service-card--large, .service-card:not(.service-card--large) { grid-column: span 6; }
 }
 
 @media (max-width: 768px) {
@@ -305,7 +260,7 @@ body.mobile-menu-open {
     .overlapping-layout .foreground-card { width: 100%; padding: 30px; }
     .foreground-card h2, .split-content h2, .layout-text h2 { font-size: 32px; }
     .alternating-layout, .split-layout { flex-direction: column !important; gap: 40px; }
-    .ideal-for-grid { grid-template-columns: 1fr; }
+    .ideal-for-grid, .features-grid { grid-template-columns: 1fr; }
 
     .tab-buttons { display: none; }
     .custom-dropdown { display: block; position: relative; width: 100%; margin-bottom: 20px; }
@@ -320,13 +275,330 @@ body.mobile-menu-open {
     .tab-content img { height: 250px; }
 }
 /* ======================================= */
-/* 13. ESTILOS PÁGINA "BUILD & CONSTRUCTION" */
+/* 14. ESTILOS PÁGINA "FACILITY DESIGN"    */
 /* ======================================= */
 
-#build-hero {
-    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/build-hero-bg.jpg');
+#facility-design-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/facility-design-bg.jpg');
 }
 
-#build-hero h1 {
+#facility-design-hero h1 {
+    font-size: 80px;
+}
+
+/* Ajustes para a seção de features em fundo claro */
+.features-grid-section:not(.dark-bg) .feature-item i {
+    color: var(--secondary-color);
+}
+.features-grid-section:not(.dark-bg) .feature-item h3 {
+    color: var(--primary-color);
+}
+.features-grid-section:not(.dark-bg) .feature-item p {
+    color: var(--dark-gray);
+}
+/* ======================================= */
+/* 15. ESTILOS PÁGINA "CUSTOM BRAND"       */
+/* ======================================= */
+
+#custom-brand-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/custom-brand-bg.jpg');
+}
+
+#custom-brand-hero h1 {
+    font-size: 90px;
+}
+
+.product-list {
+    list-style: none;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 10px;
+}
+
+.product-list li {
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.product-list i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+/* ======================================= */
+/* 16. ESTILOS PÁGINA "GYM INSTALLATION"   */
+/* ======================================= */
+
+#installation-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/installation-hero-bg.jpg');
+}
+
+#installation-hero h1 {
+    font-size: 70px; /* Fonte ajustada para o título longo */
+}
+/* ======================================= */
+/* 17. ESTILOS PÁGINA "GYM DESIGN"         */
+/* ======================================= */
+
+#gym-design-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/gym-design-bg.jpg');
+}
+/* ======================================= */
+/* 18. ESTILOS PÁGINA "SERVICE & REPAIR"   */
+/* ======================================= */
+
+#service-repair-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/service-repair-bg.jpg');
+}
+
+#service-repair-hero h1 {
+    font-size: 60px; /* Fonte ajustada para o título longo */
+}
+/* ======================================= */
+/* 19. ESTILOS PÁGINA "KIT MOVES"          */
+/* ======================================= */
+
+#kit-moves-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/kit-moves-bg.jpg');
+}
+
+#kit-moves-hero h1 {
     font-size: 80px; /* Fonte ajustada para o título */
+}
+/* ======================================= */
+/* 20. ESTILOS PÁGINA "OUR MISSION"        */
+/* ======================================= */
+
+#mission-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/mission-hero-bg.jpg');
+}
+
+/* --- Seção de Carrossel de Logos --- */
+.logo-carousel-section {
+    padding: 60px 0;
+    background-color: var(--white);
+    overflow: hidden; /* Essencial para o efeito de carrossel */
+    position: relative;
+}
+
+/* Efeito de sombra nas laterais */
+.logo-carousel-section::before,
+.logo-carousel-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+}
+
+.logo-carousel-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--white), transparent);
+}
+
+.logo-carousel-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--white), transparent);
+}
+
+.logo-carousel {
+    display: flex;
+    width: fit-content; /* Largura baseada no conteúdo */
+}
+
+.logos-slide {
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Espaço entre os logos */
+    animation: 60s scroll infinite linear; /* Duração da animação */
+}
+
+.logos-slide img {
+    height: 60px; /* Altura dos logos */
+    max-width: 150px;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.logos-slide img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Animação de scroll infinito */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+/* ======================================= */
+/* 21. ESTILOS PÁGINA "CONTACT"            */
+/* ======================================= */
+
+#contact-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/contact-hero-bg.jpg');
+}
+
+/* --- Seção do Mapa --- */
+.map-section {
+    line-height: 0; /* Remove espaço extra abaixo do iframe */
+}
+
+/* --- Seção de Ícones --- */
+.contact-icons-section {
+    background-color: var(--dark-gray);
+    padding: 40px 0;
+}
+.contact-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+.icon-item {
+    color: var(--text-color-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.icon-item:hover {
+    color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+.icon-item i {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+.icon-item span {
+    display: block;
+    font-weight: 500;
+}
+
+/* --- Seção do Formulário --- */
+.form-section {
+    background-color: var(--light-gray);
+}
+.form-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    background-color: var(--white);
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+.form-container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+.form-container .btn {
+    width: 100%;
+}
+
+.info-container h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.info-block {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.info-block h4 {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+.info-block p {
+    font-size: 15px;
+}
+
+/* --- Responsividade da Página de Contato --- */
+@media(max-width: 992px) {
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+}
+@media(max-width: 768px) {
+    .form-layout {
+        padding: 30px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+/* ======================================= */
+/* 22. ESTILOS PÁGINA "GALLERY"            */
+/* ======================================= */
+
+#gallery-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/gallery-hero-bg.jpg');
+}
+
+#gallery-hero h1 {
+    font-size: 80px; /* Fonte ajustada para o título */
+    margin-bottom: 10px;
+}
+
+/* --- Seção da Galeria --- */
+.gallery-section {
+    background-color: var(--light-gray);
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* --- Responsividade da Galeria --- */
+@media(max-width: 400px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Uma imagem por linha em telas muito pequenas */
+    }
 }
