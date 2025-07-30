@@ -642,3 +642,15 @@ body.mobile-menu-open {
         grid-template-columns: 1fr; /* Uma imagem por linha em telas muito pequenas */
     }
 }
+
+/* ======================================= */
+/* 23. ESTILOS PÁGINA "STORAGE & DISTRIBUTION" */
+/* ======================================= */
+
+#storage-hero {
+    background-image: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.5)), url('../images/storage-hero-bg.jpg');
+}
+
+#storage-hero h1 {
+    font-size: 80px;
+}
