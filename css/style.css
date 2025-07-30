@@ -61,7 +61,7 @@ body.mobile-menu-open {
 /* ======================================= */
 /* 3. SEÇÕES GERAIS (HERO, PARALLAX, ETC)  */
 /* ======================================= */
-#hero { background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/bgHomePage.jpg') no-repeat center center/cover; color: var(--white); min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
+#hero { background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/homepage/bgHomePage.jpg') no-repeat center center/cover; color: var(--white); min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
 .hero-content { max-width: 800px; }
 #hero .hero-title { font-size: 64px; font-weight: 800; line-height: 1.1; }
 #hero .hero-tagline { font-size: 28px; font-weight: 700; margin: 15px 0 25px 0; letter-spacing: 1px; }
@@ -188,6 +188,25 @@ body.mobile-menu-open {
 .ideal-for-section.dark-bg { background-color: #1a1a1d; }
 .ideal-for-section.dark-bg .ideal-item { background-color: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); }
 .ideal-for-section.dark-bg .ideal-item span { color: var(--white); }
+
+/* ================================================= */
+/* IMAGENS DE FUNDO PARA OS BANNERS DA HOMEPAGE   */
+/* ================================================= */
+
+/* Banner "FORTITUDE EQUIP" */
+#about {
+    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/homepage/Fortitude-equip-homepg.jpeg');
+}
+
+/* Banner "GYM FLOORING" */
+#gym-flooring {
+    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/homepage/Flooring-Homepg.jpg');
+}
+
+/* Banner "GYM INSTALLATION" */
+#gym-installation {
+    background-image: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('../images/homepage/Gym-Installation-homepg.jpeg');
+}
 
 /* ======================================= */
 /* 8. RESPONSIVIDADE (MEDIA QUERIES)       */
